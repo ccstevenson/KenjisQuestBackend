@@ -2,41 +2,53 @@ from rest_framework import serializers
 from models import *
 
 
-class EmployeeSerializer(serializers.ModelSerializer):
+class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = Employee
-        fields = ('id', 'name',)
+        model = User
 
 
-class BusinessSerializer(serializers.ModelSerializer):
-
+class CharacterSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = Business
-        fields = ('id', 'name',)
+        model = Character
 
 
-class NestedBusinessSerializer(serializers.ModelSerializer):
-    owners = BusinessSerializer()
-    employees = EmployeeSerializer()
+class EnemySerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
-        model = Business
-        fields = ('id', 'name',)
+        model = Enemy
 
 
-class OwnerSerializer(serializers.ModelSerializer):
+class GameSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = Owner
-        fields = ('id', 'name',)
+        model = Game
 
 
-class TodoSerializer(serializers.ModelSerializer):
+class ScenarioSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = Todo
-        fields = ('id', 'name',)
+        model = Scenario
 
 
-class ProductSerializer(serializers.ModelSerializer):
+class WeaponSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = Product
-        fields = ('id', 'name',)
+        model = Weapon
+
+
+class ItemSerializer(serializers.HyperlinkedModelSerializer):
+
+    class Meta:
+        model = Item
+
+
+class SkillSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Skill
+
+
+class RaceSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Race
+
+
+class NationalitySerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Nationality

@@ -1,57 +1,91 @@
 from django.db import models
 
 
-class Business(models.Model):
-    name = models.CharField(max_length=50, unique=True)
-    logo = models.CharField(max_length=50, null=True, blank=True)
-    address = models.TextField(default="", null=True, blank=True)
-    phone = models.TextField(default="", null=True, blank=True)
-    website = models.TextField(default="", null=True, blank=True)
-    email = models.TextField(default="", null=True, blank=True)
+class User(models.Model):
+    name = models.CharField(default='', max_length=50)
+    username = models.CharField(default='', max_length=50, unique=True)
+    password = models.CharField(default='', max_length=50)
+    email = models.EmailField(default='',)
+    USER_TYPES = (
+        ('0', ''),
+        ('1', 'Player'),
+        ('2', 'DM')
+    )
+    type = models.CharField(default='', choices=USER_TYPES,  max_length=50, unique=True)
+    characters = models.OneToOneField('Character', null=True, blank=True)
 
     def __unicode__(self):
         return self.name
 
 
-class Owner(models.Model):
+class Character(models.Model):
     name = models.CharField(max_length=50, unique=True)
-    username = models.TextField(default="", null=True, blank=True)
-    password = models.TextField(default="", null=True, blank=True)
-    emailAddress = models.TextField(default="", null=True, blank=True)
-    Business = models.ManyToManyField('Business', null=True, blank=True)
+    owner = models.OneToOneField('User', null=True, blank=True)
+    active = models.BooleanField(default=False,)
+    hit_points = models.IntegerField(default=0)
+    race = models.OneToOneField('Race', null=True, blank=True)
+    nationality = models.OneToOneField('Nationality', null=True, blank=True)
+    items = models.ManyToManyField('Item', null=True, blank=True)
+    weapons = models.ManyToManyField('Weapon', null=True, blank=True)
+    skills = models.ManyToManyField('Skill', null=True, blank=True)
 
     def __unicode__(self):
         return self.name
 
 
-class Employee(models.Model):
+class Enemy(models.Model):
     name = models.CharField(max_length=50, unique=True)
-    username = models.TextField(default="", null=True, blank=True)
-    password = models.TextField(default="", null=True, blank=True)
-    emailAddress = models.TextField(default="", null=True, blank=True)
-    Business = models.ManyToManyField('Business', null=False, blank=False)
 
     def __unicode__(self):
         return self.name
 
 
-class Todo(models.Model):
-    name = models.CharField(max_length=50)
-    Business = models.ManyToManyField('Business', null=False, blank=False)
-
-    class Meta:
-        verbose_name_plural = "Todos"
+class Game(models.Model):
+    name = models.CharField(max_length=50, unique=True)
+    players = models.ManyToManyField('User', null=True, blank=True)
+    scenario = models.OneToOneField('Scenario',  null=True, blank=True)
 
     def __unicode__(self):
         return self.name
 
 
-class Product(models.Model):
+class Scenario(models.Model):
     name = models.CharField(max_length=50, unique=True)
-    price = models.FloatField(default=1.00, null=True, blank=True)
-    num_in_stock = models.IntegerField(default=0, null=True, blank=True)
-    image_path = models.CharField(max_length=50, null=True, blank=True) #referencing an image path until functionality is added to upload a photo
-    Business = models.ManyToManyField('Business', null=False, blank=False)
+
+    def __unicode__(self):
+        return self.name
+
+
+class Weapon(models.Model):
+    name = models.CharField(max_length=50, unique=True)
+
+    def __unicode__(self):
+        return self.name
+
+
+class Item(models.Model):
+    name = models.CharField(max_length=50, unique=True)
+
+    def __unicode__(self):
+        return self.name
+
+
+class Skill(models.Model):
+    name = models.CharField(max_length=50, unique=True)
+
+    def __unicode__(self):
+        return self.name
+
+
+class Race(models.Model):
+    name = models.CharField(max_length=50, unique=True)
+
+    def __unicode__(self):
+        return self.name
+
+
+class Nationality(models.Model):
+    name = models.CharField(max_length=50, unique=True)
 
     def __unicode__(self):
         return self.name

@@ -1,108 +1,214 @@
-
+from django.contrib.auth.models import User, Group
 from rest_framework import generics
 from serializers import *
 from models import *
 
 
-class BusinessList(generics.ListAPIView):
+class UserList(generics.ListAPIView):
     # permission_classes = (permissions.IsAuthenticated,)
-    model = Business
-    serializer_class = NestedBusinessSerializer
-    queryset = Business.objects.all()
+    model = User
+    serializer_class = UserSerializer
+    queryset = User.objects.all()
 
 
-class BusinessDetail(generics.RetrieveUpdateDestroyAPIView):
+class UserDetail(generics.RetrieveUpdateDestroyAPIView):
     # permission_classes = (permissions.IsAuthenticated,)
-    model = Business
-    serializer_class = BusinessSerializer
-    queryset = Business.objects.all()
+    model = User
+    serializer_class = UserSerializer
+    queryset = User.objects.all()
 
 
-class CreateBusiness(generics.CreateAPIView):
+class CreateUser(generics.ListAPIView):
     # permission_classes = (permissions.IsAuthenticated,)
-    model = Business
-    serializer_class = BusinessSerializer
-    queryset = Business.objects.all()
+    model = User
+    serializer_class = UserSerializer
+    queryset = User.objects.all()
 
 
-class OwnerList(generics.ListCreateAPIView):
+class CharacterList(generics.ListAPIView):
     # permission_classes = (permissions.IsAuthenticated,)
-    model = Owner
-    serializer_class = OwnerSerializer
-    queryset = Owner.objects.all()
+    model = Character
+    serializer_class = CharacterSerializer
+    queryset = Character.objects.all()
 
 
-class OwnerDetail(generics.RetrieveUpdateDestroyAPIView):
+class CharacterDetail(generics.RetrieveUpdateDestroyAPIView):
     # permission_classes = (permissions.IsAuthenticated,)
-    model = Owner
-    serializer_class = OwnerSerializer
-    queryset = Owner.objects.all()
+    model = Character
+    serializer_class = CharacterSerializer
+    queryset = Character.objects.all()
 
 
-class CreateOwner(generics.CreateAPIView):
+class CreateCharacter(generics.CreateAPIView):
     # permission_classes = (permissions.IsAuthenticated,)
-    model = Owner
-    serializer_class = OwnerSerializer
-    queryset = Owner.objects.all()
+    model = Character
+    serializer_class = CharacterSerializer
+    queryset = Character.objects.all()
 
 
-class EmployeeList(generics.ListCreateAPIView):
+class EnemyList(generics.ListAPIView):
     # permission_classes = (permissions.IsAuthenticated,)
-    model = Employee
-    serializer_class = EmployeeSerializer
-    queryset = Employee.objects.all()
+    model = Enemy
+    serializer_class = EnemySerializer
+    queryset = Enemy.objects.all()
 
 
-class EmployeeDetail(generics.RetrieveUpdateDestroyAPIView):
+class EnemyDetail(generics.RetrieveUpdateDestroyAPIView):
     # permission_classes = (permissions.IsAuthenticated,)
-    model = Employee
-    serializer_class = EmployeeSerializer
-    queryset = Employee.objects.all()
+    model = Enemy
+    serializer_class = EnemySerializer
+    queryset = Enemy.objects.all()
 
 
-class CreateEmployee(generics.CreateAPIView):
+class CreateEnemy(generics.CreateAPIView):
     # permission_classes = (permissions.IsAuthenticated,)
-    model = Employee
-    serializer_class = EmployeeSerializer
-    queryset = Employee.objects.all()
+    model = Enemy
+    serializer_class = EnemySerializer
+    queryset = Enemy.objects.all()
 
 
-class TodoList(generics.ListCreateAPIView):
+class GameList(generics.ListAPIView):
     # permission_classes = (permissions.IsAuthenticated,)
-    model = Todo
-    serializer_class = TodoSerializer
-    queryset = Todo.objects.all()
+    model = Game
+    serializer_class = GameSerializer
+    queryset = Game.objects.all()
 
 
-class TodoDetail(generics.RetrieveUpdateDestroyAPIView):
+class GameDetail(generics.RetrieveUpdateDestroyAPIView):
     # permission_classes = (permissions.IsAuthenticated,)
-    model = Todo
-    serializer_class = TodoSerializer
-    queryset = Todo.objects.all()
+    model = Game
+    serializer_class = GameSerializer
+    queryset = Game.objects.all()
 
 
-class CreateTodo(generics.CreateAPIView):
+class CreateGame(generics.CreateAPIView):
     # permission_classes = (permissions.IsAuthenticated,)
-    model = Todo
-    serializer_class = TodoSerializer
-    queryset = Todo.objects.all()
+    model = Game
+    serializer_class = GameSerializer
+    queryset = Game.objects.all()
 
-class ProductList(generics.ListCreateAPIView):
+
+class ScenarioList(generics.ListAPIView):
     # permission_classes = (permissions.IsAuthenticated,)
-    model = Product
-    serializer_class = ProductSerializer
-    queryset = Product.objects.all()
+    model = Scenario
+    serializer_class = ScenarioSerializer
+    queryset = Scenario.objects.all()
 
 
-class ProductDetail(generics.RetrieveUpdateDestroyAPIView):
+class ScenarioDetail(generics.RetrieveUpdateDestroyAPIView):
     # permission_classes = (permissions.IsAuthenticated,)
-    model = Product
-    serializer_class = ProductSerializer
-    queryset = Product.objects.all()
+    model = Scenario
+    serializer_class = ScenarioSerializer
+    queryset = Scenario.objects.all()
 
 
-class CreateProduct(generics.CreateAPIView):
+class CreateScenario(generics.CreateAPIView):
     # permission_classes = (permissions.IsAuthenticated,)
-    model = Product
-    serializer_class = ProductSerializer
-    queryset = Product.objects.all()
+    model = Scenario
+    serializer_class = ScenarioSerializer
+    queryset = Scenario.objects.all()
+
+
+class WeaponList(generics.ListAPIView):
+    # permission_classes = (permissions.IsAuthenticated,)
+    model = Weapon
+    serializer_class = WeaponSerializer
+    queryset = Weapon.objects.all()
+
+
+class WeaponDetail(generics.RetrieveUpdateDestroyAPIView):
+    # permission_classes = (permissions.IsAuthenticated,)
+    model = Weapon
+    serializer_class = WeaponSerializer
+    queryset = Weapon.objects.all()
+
+
+class CreateWeapon(generics.CreateAPIView):
+    # permission_classes = (permissions.IsAuthenticated,)
+    model = Weapon
+    serializer_class = WeaponSerializer
+    queryset = Weapon.objects.all()
+
+
+class ItemList(generics.ListAPIView):
+    # permission_classes = (permissions.IsAuthenticated,)
+    model = Item
+    serializer_class = ItemSerializer
+    queryset = Item.objects.all()
+
+
+class ItemDetail(generics.RetrieveUpdateDestroyAPIView):
+    # permission_classes = (permissions.IsAuthenticated,)
+    model = Item
+    serializer_class = ItemSerializer
+    queryset = Item.objects.all()
+
+
+class CreateItem(generics.CreateAPIView):
+    # permission_classes = (permissions.IsAuthenticated,)
+    model = Item
+    serializer_class = ItemSerializer
+    queryset = Item.objects.all()
+
+
+class SkillList(generics.ListAPIView):
+    # permission_classes = (permissions.IsAuthenticated,)
+    model = Skill
+    serializer_class = SkillSerializer
+    queryset = Skill.objects.all()
+
+
+class SkillDetail(generics.RetrieveUpdateDestroyAPIView):
+    # permission_classes = (permissions.IsAuthenticated,)
+    model = Skill
+    serializer_class = SkillSerializer
+    queryset = Skill.objects.all()
+
+
+class CreateSkill(generics.CreateAPIView):
+    # permission_classes = (permissions.IsAuthenticated,)
+    model = Skill
+    serializer_class = SkillSerializer
+    queryset = Skill.objects.all()
+
+
+class RaceList(generics.ListAPIView):
+    # permission_classes = (permissions.IsAuthenticated,)
+    model = Race
+    serializer_class = RaceSerializer
+    queryset = Race.objects.all()
+
+
+class RaceDetail(generics.RetrieveUpdateDestroyAPIView):
+    # permission_classes = (permissions.IsAuthenticated,)
+    model = Race
+    serializer_class = RaceSerializer
+    queryset = Race.objects.all()
+
+
+class CreateRace(generics.CreateAPIView):
+    # permission_classes = (permissions.IsAuthenticated,)
+    model = Race
+    serializer_class = RaceSerializer
+    queryset = Race.objects.all()
+
+
+class NationalityList(generics.ListAPIView):
+    # permission_classes = (permissions.IsAuthenticated,)
+    model = Nationality
+    serializer_class = NationalitySerializer
+    queryset = Nationality.objects.all()
+
+
+class NationalityDetail(generics.RetrieveUpdateDestroyAPIView):
+    # permission_classes = (permissions.IsAuthenticated,)
+    model = Nationality
+    serializer_class = NationalitySerializer
+    queryset = Nationality.objects.all()
+
+
+class CreateNationality(generics.CreateAPIView):
+    # permission_classes = (permissions.IsAuthenticated,)
+    model = Nationality
+    serializer_class = NationalitySerializer
+    queryset = Nationality.objects.all()

@@ -1,29 +1,49 @@
 from django.conf.urls import patterns, url, include
-from bizmanage.views import *
+from apps.public.views import *
 from django.contrib import admin
 
 admin.autodiscover()
 
-urlpatterns = patterns('bizmanage.views',
-    url(r'^businesses$', BusinessList.as_view(), name='business-list'),
-    url(r'^businesses/(?P<pk>[0-9]+)$', BusinessDetail.as_view(), name='business-detail'),
-    url(r'^create-business$', CreateBusiness.as_view(), name='create-business'),
+urlpatterns = patterns('apps.public.views',
+    url(r'^users$', UserList.as_view(), name='user-list'),
+    url(r'^user/(?P<pk>[0-9]+)$', UserDetail.as_view(), name='user-detail'),
+    url(r'^create-user$', CreateUser.as_view(), name='create-user'),
 
-    url(r'^owners$', OwnerList.as_view(), name='owner-list'),
-    url(r'^owners/(?P<pk>[0-9]+)$', OwnerDetail.as_view(), name='owner-detail'),
-    url(r'^create-owners$', CreateOwner.as_view(), name='owner-recipe'),
+    url(r'^characters$', CharacterList.as_view(), name='character-list'),
+    url(r'^character/(?P<pk>[0-9]+)$', CharacterDetail.as_view(), name='character-detail'),
+    url(r'^create-character$', CreateCharacter.as_view(), name='create-character'),
 
-    url(r'^employees$', EmployeeList.as_view(), name='employee-list'),
-    url(r'^employees/(?P<pk>[0-9]+)$', EmployeeDetail.as_view(), name='employee-detail'),
-    url(r'^create-employees$', CreateEmployee.as_view(), name='employee-recipe'),
+    url(r'^enemies$', EnemyList.as_view(), name='enemy-list'),
+    url(r'^enemy/(?P<pk>[0-9]+)$', EnemyDetail.as_view(), name='enemy-detail'),
+    url(r'^create-enemy$', CreateEnemy.as_view(), name='create-enemy'),
 
-    url(r'^todos$', TodoList.as_view(), name='todo-list'),
-    url(r'^todos/(?P<pk>[0-9]+)$', TodoDetail.as_view(), name='todo-detail'),
-    url(r'^todos-owners$', CreateTodo.as_view(), name='todo-recipe'),
+    url(r'^games$', GameList.as_view(), name='game-list'),
+    url(r'^game/(?P<pk>[0-9]+)$', GameDetail.as_view(), name='game-detail'),
+    url(r'^create-game$', CreateGame.as_view(), name='create-game'),
 
-    url(r'^products$', ProductList.as_view(), name='product-list'),
-    url(r'^products/(?P<pk>[0-9]+)$', ProductDetail.as_view(), name='product-detail'),
-    url(r'^products-owners$', CreateProduct.as_view(), name='product-recipe'),
+    url(r'^scenarios$', ScenarioList.as_view(), name='scenario-list'),
+    url(r'^scenario/(?P<pk>[0-9]+)$', ScenarioDetail.as_view(), name='scenario-detail'),
+    url(r'^create-scenario$', CreateScenario.as_view(), name='create-scenario'),
+
+    url(r'^weapons$', WeaponList.as_view(), name='weapon-list'),
+    url(r'^weapon/(?P<pk>[0-9]+)$', WeaponDetail.as_view(), name='weapon-detail'),
+    url(r'^create-weapon$', CreateWeapon.as_view(), name='create-weapon'),
+
+    url(r'^items$', ItemList.as_view(), name='item-list'),
+    url(r'^item/(?P<pk>[0-9]+)$', ItemDetail.as_view(), name='item-detail'),
+    url(r'^create-item$', CreateItem.as_view(), name='create-item'),
+
+    url(r'^skills$', SkillList.as_view(), name='skill-list'),
+    url(r'^skill/(?P<pk>[0-9]+)$', SkillDetail.as_view(), name='skill-detail'),
+    url(r'^create-skill$', CreateSkill.as_view(), name='create-skill'),
+
+    url(r'^races$', RaceList.as_view(), name='race-list'),
+    url(r'^race/(?P<pk>[0-9]+)$', RaceDetail.as_view(), name='race-detail'),
+    url(r'^create-race$', CreateRace.as_view(), name='create-race'),
+
+    url(r'^nationalities$', NationalityList.as_view(), name='nationality-list'),
+    url(r'^nationality/(?P<pk>[0-9]+)$', NationalityDetail.as_view(), name='nationality-detail'),
+    url(r'^create-nationality$', CreateNationality.as_view(), name='create-nationality'),
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
