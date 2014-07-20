@@ -5,6 +5,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('apps.public.views',
+
     url(r'^users$', UserList.as_view(), name='user-list'),
     url(r'^user/(?P<pk>[0-9]+)$', UserDetail.as_view(), name='user-detail'),
     url(r'^create-user$', CreateUser.as_view(), name='create-user'),

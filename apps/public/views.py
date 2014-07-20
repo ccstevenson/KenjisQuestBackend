@@ -1,4 +1,4 @@
-from django.contrib.auth.models import User, Group
+from django.contrib.auth.models import User
 from rest_framework import generics
 from serializers import *
 from models import *
@@ -18,7 +18,7 @@ class UserDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = User.objects.all()
 
 
-class CreateUser(generics.ListAPIView):
+class CreateUser(generics.CreateAPIView):
     # permission_classes = (permissions.IsAuthenticated,)
     model = User
     serializer_class = UserSerializer

@@ -3,11 +3,14 @@ from models import *
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
+
     class Meta:
         model = User
+        depth = 1
 
 
 class CharacterSerializer(serializers.HyperlinkedModelSerializer):
+
     class Meta:
         model = Character
 
