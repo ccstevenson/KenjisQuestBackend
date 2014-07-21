@@ -22,6 +22,10 @@ urlpatterns = patterns('apps.public.views',
     url(r'^game/(?P<pk>[0-9]+)$', GameDetail.as_view(), name='game-detail'),
     url(r'^create-game$', CreateGame.as_view(), name='create-game'),
 
+    url(r'^battles$', BattleList.as_view(), name='battle-list'),
+    url(r'^battle/(?P<pk>[0-9]+)$', BattleDetail.as_view(), name='battle-detail'),
+    url(r'^create-battle$', CreateBattle.as_view(), name='create-battle'),
+
     url(r'^scenarios$', ScenarioList.as_view(), name='scenario-list'),
     url(r'^scenario/(?P<pk>[0-9]+)$', ScenarioDetail.as_view(), name='scenario-detail'),
     url(r'^create-scenario$', CreateScenario.as_view(), name='create-scenario'),

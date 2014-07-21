@@ -67,6 +67,27 @@ class CreateEnemy(generics.CreateAPIView):
     queryset = Enemy.objects.all()
 
 
+class BattleList(generics.ListAPIView):
+    # permission_classes = (permissions.IsAuthenticated,)
+    model = Battle
+    serializer_class = BattleSerializer
+    queryset = Battle.objects.all()
+
+
+class BattleDetail(generics.RetrieveUpdateDestroyAPIView):
+    # permission_classes = (permissions.IsAuthenticated,)
+    model = Battle
+    serializer_class = BattleSerializer
+    queryset = Battle.objects.all()
+
+
+class CreateBattle(generics.CreateAPIView):
+    # permission_classes = (permissions.IsAuthenticated,)
+    model = Battle
+    serializer_class = BattleSerializer
+    queryset = Battle.objects.all()
+
+
 class GameList(generics.ListAPIView):
     # permission_classes = (permissions.IsAuthenticated,)
     model = Game

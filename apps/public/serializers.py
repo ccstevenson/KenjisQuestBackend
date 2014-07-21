@@ -2,56 +2,61 @@ from rest_framework import serializers
 from models import *
 
 
-class UserSerializer(serializers.HyperlinkedModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        depth = 1
 
 
-class CharacterSerializer(serializers.HyperlinkedModelSerializer):
+class CharacterSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Character
 
 
-class EnemySerializer(serializers.HyperlinkedModelSerializer):
+class EnemySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Enemy
 
 
-class GameSerializer(serializers.HyperlinkedModelSerializer):
+class BattleSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Battle
+
+
+class GameSerializer(serializers.ModelSerializer):
     class Meta:
         model = Game
 
 
-class ScenarioSerializer(serializers.HyperlinkedModelSerializer):
+class ScenarioSerializer(serializers.ModelSerializer):
     class Meta:
         model = Scenario
 
 
-class WeaponSerializer(serializers.HyperlinkedModelSerializer):
+class WeaponSerializer(serializers.ModelSerializer):
     class Meta:
         model = Weapon
 
 
-class ItemSerializer(serializers.HyperlinkedModelSerializer):
+class ItemSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Item
 
 
-class SkillSerializer(serializers.HyperlinkedModelSerializer):
+class SkillSerializer(serializers.ModelSerializer):
     class Meta:
         model = Skill
 
 
-class RaceSerializer(serializers.HyperlinkedModelSerializer):
+class RaceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Race
 
 
-class NationalitySerializer(serializers.HyperlinkedModelSerializer):
+class NationalitySerializer(serializers.ModelSerializer):
     class Meta:
         model = Nationality
