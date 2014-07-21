@@ -43,6 +43,9 @@ class Nationality(models.Model):
     def __unicode__(self):
         return self.name
 
+class CharacterClass(models.Model):
+    name = models.CharField(max_length=, unique=True, default='')
+
 
 class Character(models.Model):
     owner = models.ForeignKey(User, 'username', default='')
@@ -50,9 +53,11 @@ class Character(models.Model):
     is_active = models.BooleanField(default=False)
     race = models.ForeignKey(Race, default='')
     nationality = models.ForeignKey(Nationality, default='')
+    character_class = models.ForeignKey(CharacterClass, default='')
     hit_points = models.IntegerField(default=0,)
     skills = models.ManyToManyField(Skill,)
     inventory = models.ManyToManyField(Item, default='')
+
 
     def __unicode__(self):
         return self.name
