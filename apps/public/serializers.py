@@ -14,18 +14,6 @@ class CharacterSerializer(serializers.ModelSerializer):
         model = Character
 
 
-class EnemySerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = Enemy
-
-
-class BattleSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = Battle
-
-
 class GameSerializer(serializers.ModelSerializer):
     class Meta:
         model = Game

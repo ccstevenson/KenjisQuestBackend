@@ -2,8 +2,13 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-class Enemy(models.Model):
-    name = models.CharField(max_length=50, unique=True, default='')
+class Player(User):
+
+    def __unicode__(self):
+        return self.name
+
+
+class GameMaster(User):
 
     def __unicode__(self):
         return self.name
@@ -44,7 +49,7 @@ class Nationality(models.Model):
         return self.name
 
 class CharacterClass(models.Model):
-    name = models.CharField(max_length=, unique=True, default='')
+    name = models.CharField(max_length=50, unique=True, default='')
 
 
 class Character(models.Model):
@@ -58,23 +63,30 @@ class Character(models.Model):
     skills = models.ManyToManyField(Skill,)
     inventory = models.ManyToManyField(Item, default='')
 
-
     def __unicode__(self):
         return self.name
 
 
-class Battle(models.Model):
+class Encounter(models.Model):
     name = models.CharField(max_length=50, unique=True, default='')
-    enemies = models.ManyToManyField(Enemy,)
-    characters = models.ManyToManyField(Character,)
+    items = models.ManyToManyField(Item, default='')
+    characters = models.ManyToManyField(Character, default='')
 
     def __unicode__(self):
         return self.name
+
 
 
 class Scenario(models.Model):
     name = models.CharField(max_length=50, unique=True, default='')
-    battles = models.ManyToManyField(Battle,)
+    encounters = models.ManyToManyField(Encounter,)
+
+    def __unicode__(self):
+        return self.name
+
+
+class Chapter(models.Model):
+    name = models.CharField(max_length=50, unique=True, default='')
 
     def __unicode__(self):
         return self.name
@@ -82,7 +94,8 @@ class Scenario(models.Model):
 
 class Game(models.Model):
     name = models.CharField(max_length=50, unique=True, default='')
-    players = models.ManyToManyField(User,)
+    players = models.ManyToManyField(Player,default='')
+    gamer_master = models.OneToOneField(GameMaster,)
     scenario = models.ForeignKey(Scenario, default='')
     characters = models.ManyToManyField(Character,)  # from user's active characters
 

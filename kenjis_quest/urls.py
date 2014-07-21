@@ -14,17 +14,9 @@ urlpatterns = patterns('apps.public.views',
     url(r'^character/(?P<pk>[0-9]+)$', CharacterDetail.as_view(), name='character-detail'),
     url(r'^create-character$', CreateCharacter.as_view(), name='create-character'),
 
-    url(r'^enemies$', EnemyList.as_view(), name='enemy-list'),
-    url(r'^enemy/(?P<pk>[0-9]+)$', EnemyDetail.as_view(), name='enemy-detail'),
-    url(r'^create-enemy$', CreateEnemy.as_view(), name='create-enemy'),
-
     url(r'^games$', GameList.as_view(), name='game-list'),
     url(r'^game/(?P<pk>[0-9]+)$', GameDetail.as_view(), name='game-detail'),
     url(r'^create-game$', CreateGame.as_view(), name='create-game'),
-
-    url(r'^battles$', BattleList.as_view(), name='battle-list'),
-    url(r'^battle/(?P<pk>[0-9]+)$', BattleDetail.as_view(), name='battle-detail'),
-    url(r'^create-battle$', CreateBattle.as_view(), name='create-battle'),
 
     url(r'^scenarios$', ScenarioList.as_view(), name='scenario-list'),
     url(r'^scenario/(?P<pk>[0-9]+)$', ScenarioDetail.as_view(), name='scenario-detail'),
