@@ -5,6 +5,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('apps.public.views',
+
     url(r'^users$', UserList.as_view(), name='user-list'),
     url(r'^user/(?P<pk>[0-9]+)$', UserDetail.as_view(), name='user-detail'),
     url(r'^create-user$', CreateUser.as_view(), name='create-user'),
@@ -20,6 +21,10 @@ urlpatterns = patterns('apps.public.views',
     url(r'^games$', GameList.as_view(), name='game-list'),
     url(r'^game/(?P<pk>[0-9]+)$', GameDetail.as_view(), name='game-detail'),
     url(r'^create-game$', CreateGame.as_view(), name='create-game'),
+
+    url(r'^battles$', BattleList.as_view(), name='battle-list'),
+    url(r'^battle/(?P<pk>[0-9]+)$', BattleDetail.as_view(), name='battle-detail'),
+    url(r'^create-battle$', CreateBattle.as_view(), name='create-battle'),
 
     url(r'^scenarios$', ScenarioList.as_view(), name='scenario-list'),
     url(r'^scenario/(?P<pk>[0-9]+)$', ScenarioDetail.as_view(), name='scenario-detail'),

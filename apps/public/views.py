@@ -1,4 +1,4 @@
-from django.contrib.auth.models import User, Group
+from django.contrib.auth.models import User
 from rest_framework import generics
 from serializers import *
 from models import *
@@ -18,7 +18,7 @@ class UserDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = User.objects.all()
 
 
-class CreateUser(generics.ListAPIView):
+class CreateUser(generics.CreateAPIView):
     # permission_classes = (permissions.IsAuthenticated,)
     model = User
     serializer_class = UserSerializer
@@ -65,6 +65,27 @@ class CreateEnemy(generics.CreateAPIView):
     model = Enemy
     serializer_class = EnemySerializer
     queryset = Enemy.objects.all()
+
+
+class BattleList(generics.ListAPIView):
+    # permission_classes = (permissions.IsAuthenticated,)
+    model = Battle
+    serializer_class = BattleSerializer
+    queryset = Battle.objects.all()
+
+
+class BattleDetail(generics.RetrieveUpdateDestroyAPIView):
+    # permission_classes = (permissions.IsAuthenticated,)
+    model = Battle
+    serializer_class = BattleSerializer
+    queryset = Battle.objects.all()
+
+
+class CreateBattle(generics.CreateAPIView):
+    # permission_classes = (permissions.IsAuthenticated,)
+    model = Battle
+    serializer_class = BattleSerializer
+    queryset = Battle.objects.all()
 
 
 class GameList(generics.ListAPIView):
