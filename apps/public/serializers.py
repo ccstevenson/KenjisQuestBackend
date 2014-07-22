@@ -49,7 +49,7 @@ class NationalitySerializer(serializers.ModelSerializer):
 class GameSerializer(serializers.ModelSerializer):
     class Meta:
         model = Game
-
+        depth = 2
 
 class ChapterSerializer(serializers.ModelSerializer):
     class Meta:

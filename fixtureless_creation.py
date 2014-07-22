@@ -1,6 +1,6 @@
-__author__ = 'administrator'
 import os
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', "kenjis_quest.settings")
+
 from fixtureless import Factory
 
 from apps.public.models import *
