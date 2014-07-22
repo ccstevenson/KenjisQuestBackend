@@ -25,6 +25,27 @@ class CreateUser(generics.CreateAPIView):
     queryset = User.objects.all()
 
 
+class PlayerList(generics.ListAPIView):
+    # permission_classes = (permissions.IsAuthenticated,)
+    model = Player
+    serializer_class = PlayerSerializer
+    queryset = Player.objects.all()
+
+
+class PlayerDetail(generics.RetrieveUpdateDestroyAPIView):
+    # permission_classes = (permissions.IsAuthenticated,)
+    model = Player
+    serializer_class = PlayerSerializer
+    queryset = Player.objects.all()
+
+
+class CreatePlayer(generics.CreateAPIView):
+    # permission_classes = (permissions.IsAuthenticated,)
+    model = Player
+    serializer_class = PlayerSerializer
+    queryset = Player.objects.all()
+
+
 class CharacterList(generics.ListAPIView):
     # permission_classes = (permissions.IsAuthenticated,)
     model = Character
@@ -46,46 +67,25 @@ class CreateCharacter(generics.CreateAPIView):
     queryset = Character.objects.all()
 
 
-class GameList(generics.ListAPIView):
+class CharacterClassList(generics.ListAPIView):
     # permission_classes = (permissions.IsAuthenticated,)
-    model = Game
-    serializer_class = GameSerializer
-    queryset = Game.objects.all()
+    model = CharacterClass
+    serializer_class = CharacterClassSerializer
+    queryset = CharacterClass.objects.all()
 
 
-class GameDetail(generics.RetrieveUpdateDestroyAPIView):
+class CharacterClassDetail(generics.RetrieveUpdateDestroyAPIView):
     # permission_classes = (permissions.IsAuthenticated,)
-    model = Game
-    serializer_class = GameSerializer
-    queryset = Game.objects.all()
+    model = CharacterClass
+    serializer_class = CharacterClassSerializer
+    queryset = CharacterClass.objects.all()
 
 
-class CreateGame(generics.CreateAPIView):
+class CreateCharacterClass(generics.CreateAPIView):
     # permission_classes = (permissions.IsAuthenticated,)
-    model = Game
-    serializer_class = GameSerializer
-    queryset = Game.objects.all()
-
-
-class ScenarioList(generics.ListAPIView):
-    # permission_classes = (permissions.IsAuthenticated,)
-    model = Scenario
-    serializer_class = ScenarioSerializer
-    queryset = Scenario.objects.all()
-
-
-class ScenarioDetail(generics.RetrieveUpdateDestroyAPIView):
-    # permission_classes = (permissions.IsAuthenticated,)
-    model = Scenario
-    serializer_class = ScenarioSerializer
-    queryset = Scenario.objects.all()
-
-
-class CreateScenario(generics.CreateAPIView):
-    # permission_classes = (permissions.IsAuthenticated,)
-    model = Scenario
-    serializer_class = ScenarioSerializer
-    queryset = Scenario.objects.all()
+    model = CharacterClass
+    serializer_class = CharacterClassSerializer
+    queryset = CharacterClass.objects.all()
 
 
 class WeaponList(generics.ListAPIView):
@@ -192,8 +192,27 @@ class CreateNationality(generics.CreateAPIView):
     serializer_class = NationalitySerializer
     queryset = Nationality.objects.all()
 
+class GameList(generics.ListAPIView):
+    # permission_classes = (permissions.IsAuthenticated,)
+    model = Game
+    serializer_class = GameSerializer
+    queryset = Game.objects.all()
 
-#Chapter Views
+
+class GameDetail(generics.RetrieveUpdateDestroyAPIView):
+    # permission_classes = (permissions.IsAuthenticated,)
+    model = Game
+    serializer_class = GameSerializer
+    queryset = Game.objects.all()
+
+
+class CreateGame(generics.CreateAPIView):
+    # permission_classes = (permissions.IsAuthenticated,)
+    model = Game
+    serializer_class = GameSerializer
+    queryset = Game.objects.all()
+
+
 class ChapterList(generics.ListAPIView):
     # permission_classes = (permissions.IsAuthenticated,)
     model = Chapter(generics.CreateAPIView)
@@ -213,3 +232,45 @@ class CreateChapter(generics.CreateAPIView):
     model = Chapter
     serializer_class = ChapterSerializer
     queryset = Chapter.objects.all()
+
+
+class ScenarioList(generics.ListAPIView):
+    # permission_classes = (permissions.IsAuthenticated,)
+    model = Scenario
+    serializer_class = ScenarioSerializer
+    queryset = Scenario.objects.all()
+
+
+class ScenarioDetail(generics.RetrieveUpdateDestroyAPIView):
+    # permission_classes = (permissions.IsAuthenticated,)
+    model = Scenario
+    serializer_class = ScenarioSerializer
+    queryset = Scenario.objects.all()
+
+
+class CreateScenario(generics.CreateAPIView):
+    # permission_classes = (permissions.IsAuthenticated,)
+    model = Scenario
+    serializer_class = ScenarioSerializer
+    queryset = Scenario.objects.all()
+
+
+class EncounterList(generics.ListAPIView):
+    # permission_classes = (permissions.IsAuthenticated,)
+    model = Encounter
+    serializer_class = EncounterSerializer
+    queryset = Encounter.objects.all()
+
+
+class EncounterDetail(generics.RetrieveUpdateDestroyAPIView):
+    # permission_classes = (permissions.IsAuthenticated,)
+    model = Encounter
+    serializer_class = EncounterSerializer
+    queryset = Encounter.objects.all()
+
+
+class CreateEncounter(generics.CreateAPIView):
+    # permission_classes = (permissions.IsAuthenticated,)
+    model = Encounter
+    serializer_class = EncounterSerializer
+    queryset = Encounter.objects.all()

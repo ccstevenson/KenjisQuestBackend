@@ -3,25 +3,22 @@ from models import *
 
 
 class UserSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = User
 
+class PlayerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Player
+
 
 class CharacterSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = Character
 
 
-class GameSerializer(serializers.ModelSerializer):
+class CharacterClassSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Game
-
-
-class ScenarioSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Scenario
+        model = CharacterClass
 
 
 class WeaponSerializer(serializers.ModelSerializer):
@@ -30,7 +27,6 @@ class WeaponSerializer(serializers.ModelSerializer):
 
 
 class ItemSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = Item
 
@@ -50,6 +46,23 @@ class NationalitySerializer(serializers.ModelSerializer):
         model = Nationality
 
 
+class GameSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Game
+
+
 class ChapterSerializer(serializers.ModelSerializer):
     class Meta:
         model = Chapter
+
+
+class ScenarioSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Scenario
+
+
+class EncounterSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Encounter
+
+
