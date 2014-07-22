@@ -46,6 +46,6 @@ urlpatterns = patterns('apps.public.views',
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 
     url(r'^chapters$', ChapterList.as_view(), name='chapter-list'),
-    url(r'^chapters/(?P<pk>[0-9]+)$', ChapterDetail.as_view(), name='chapter-detail'),
-    url(r'^create-nationality$', CreateChapter.as_view(), name='create-chapter'),
+    url(r'^chapter/(?P<pk>[0-9]+)$', ChapterDetail.as_view(), name='chapter-detail'),
+    url(r'^create-chapters$', CreateChapter.as_view(), name='create-chapter'),
 )
