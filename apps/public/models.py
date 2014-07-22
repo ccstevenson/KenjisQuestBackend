@@ -8,12 +8,6 @@ class Player(User):
         return self.name
 
 
-class GameMaster(User):
-
-    def __unicode__(self):
-        return self.name
-
-
 class Item(models.Model):
     name = models.CharField(max_length=50, unique=True, default='')
 
@@ -98,7 +92,6 @@ class Chapter(models.Model):
 class Game(models.Model):
     name = models.CharField(max_length=50, unique=True, default='')
     players = models.ManyToManyField(Player,default='')
-    gamer_master = models.OneToOneField(GameMaster,)
     scenario = models.ForeignKey(Scenario, default='')
     encounter = models.ForeignKey(Encounter, default='')
     characters = models.ManyToManyField(Character,)  # from user's active characters
