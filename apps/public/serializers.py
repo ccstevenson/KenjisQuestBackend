@@ -48,3 +48,8 @@ class RaceSerializer(serializers.ModelSerializer):
 class NationalitySerializer(serializers.ModelSerializer):
     class Meta:
         model = Nationality
+
+
+class ChapterSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Chapter

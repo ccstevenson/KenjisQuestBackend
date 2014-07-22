@@ -191,3 +191,25 @@ class CreateNationality(generics.CreateAPIView):
     model = Nationality
     serializer_class = NationalitySerializer
     queryset = Nationality.objects.all()
+
+
+#Chapter Views
+class ChapterList(generics.ListAPIView):
+    # permission_classes = (permissions.IsAuthenticated,)
+    model = Chapter(generics.CreateAPIView)
+    serializer_class = ChapterSerializer
+    queryset = Chapter.objects.all()
+
+
+class ChapterDetail(generics.RetrieveUpdateDestroyAPIView):
+    # permission_classes = (permissions.IsAuthenticated,)
+    model = Chapter
+    serializer_class = ChapterSerializer
+    queryset = Chapter.objects.all()
+
+
+class CreateChapter(generics.CreateAPIView):
+    # permission_classes = (permissions.IsAuthenticated,)
+    model = Chapter
+    serializer_class = ChapterSerializer
+    queryset = Chapter.objects.all()
