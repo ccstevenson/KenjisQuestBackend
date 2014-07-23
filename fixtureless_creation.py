@@ -5,7 +5,7 @@ from fixtureless import Factory
 
 from apps.public.models import *
 
-objects = [Player, Item, Weapon, Skill, Character, CharacterClass, Race, Nationality, Encounter, Scenario, Chapter, Game]
+objects = [Item, Weapon, Skill, Character, CharacterClass, Race, Nationality, Encounter, Scenario, Chapter, Game]
 
 for object in objects:
     factory = Factory()

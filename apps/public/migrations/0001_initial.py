@@ -8,18 +8,6 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        # Adding model 'Player'
-        db.create_table(u'public_player', (
-            (u'user_ptr', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['auth.User'], unique=True, primary_key=True)),
-        ))
-        db.send_create_signal(u'public', ['Player'])
-
-        # Adding model 'GameMaster'
-        db.create_table(u'public_gamemaster', (
-            (u'user_ptr', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['auth.User'], unique=True, primary_key=True)),
-        ))
-        db.send_create_signal(u'public', ['GameMaster'])
-
         # Adding model 'Item'
         db.create_table(u'public_item', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
@@ -178,12 +166,6 @@ class Migration(SchemaMigration):
 
 
     def backwards(self, orm):
-        # Deleting model 'Player'
-        db.delete_table(u'public_player')
-
-        # Deleting model 'GameMaster'
-        db.delete_table(u'public_gamemaster')
-
         # Deleting model 'Item'
         db.delete_table(u'public_item')
 
@@ -318,10 +300,6 @@ class Migration(SchemaMigration):
             'name': ('django.db.models.fields.CharField', [], {'default': "''", 'unique': 'True', 'max_length': '10'}),
             'players': ('django.db.models.fields.related.ManyToManyField', [], {'default': "''", 'related_name': "'Games'", 'symmetrical': 'False', 'to': u"orm['auth.User']"})
         },
-        u'public.gamemaster': {
-            'Meta': {'object_name': 'GameMaster', '_ormbases': [u'auth.User']},
-            u'user_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': u"orm['auth.User']", 'unique': 'True', 'primary_key': 'True'})
-        },
         u'public.item': {
             'Meta': {'object_name': 'Item'},
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
@@ -331,10 +309,6 @@ class Migration(SchemaMigration):
             'Meta': {'object_name': 'Nationality'},
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'default': "''", 'unique': 'True', 'max_length': '10'})
-        },
-        u'public.player': {
-            'Meta': {'object_name': 'Player', '_ormbases': [u'auth.User']},
-            u'user_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': u"orm['auth.User']", 'unique': 'True', 'primary_key': 'True'})
         },
         u'public.race': {
             'Meta': {'object_name': 'Race'},
