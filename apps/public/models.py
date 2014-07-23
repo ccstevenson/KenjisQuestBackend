@@ -2,12 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-class Player(User):
-
-    def __unicode__(self):
-        return self.name
-
-
 class Item(models.Model):
     name = models.CharField(max_length=10, unique=True, default='')
 
@@ -92,7 +86,8 @@ class Chapter(models.Model):
 
 class Game(models.Model):
     name = models.CharField(max_length=10, unique=True, default='')
-    players = models.ManyToManyField(User, default='')
+    players = models.ManyToManyField(User, default='', related_name='Games')
+    game_master = models.OneToOneField(User,)
     chapters = models.ManyToManyField(Chapter, default='')
 
     def __unicode__(self):

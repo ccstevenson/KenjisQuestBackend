@@ -10,10 +10,6 @@ urlpatterns = patterns('apps.public.views',
     url(r'^user/(?P<pk>[0-9]+)$', UserDetail.as_view(), name='user-detail'),
     url(r'^create-user$', CreateUser.as_view(), name='create-user'),
 
-    url(r'^players$', PlayerList.as_view(), name='player-list'),
-    url(r'^player/(?P<pk>[0-9]+)$', PlayerDetail.as_view(), name='player-detail'),
-    url(r'^create-player$', CreatePlayer.as_view(), name='create-player'),
-
     url(r'^characters$', CharacterList.as_view(), name='character-list'),
     url(r'^character/(?P<pk>[0-9]+)$', CharacterDetail.as_view(), name='character-detail'),
     url(r'^create-character$', CreateCharacter.as_view(), name='create-character'),

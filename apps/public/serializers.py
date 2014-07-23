@@ -6,10 +6,6 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
 
-class PlayerSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Player
-
 
 class CharacterSerializer(serializers.ModelSerializer):
     class Meta:

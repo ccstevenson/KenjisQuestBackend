@@ -25,27 +25,6 @@ class CreateUser(generics.CreateAPIView):
     queryset = User.objects.all()
 
 
-class PlayerList(generics.ListAPIView):
-    # permission_classes = (permissions.IsAuthenticated,)
-    model = Player
-    serializer_class = PlayerSerializer
-    queryset = Player.objects.all()
-
-
-class PlayerDetail(generics.RetrieveUpdateDestroyAPIView):
-    # permission_classes = (permissions.IsAuthenticated,)
-    model = Player
-    serializer_class = PlayerSerializer
-    queryset = Player.objects.all()
-
-
-class CreatePlayer(generics.CreateAPIView):
-    # permission_classes = (permissions.IsAuthenticated,)
-    model = Player
-    serializer_class = PlayerSerializer
-    queryset = Player.objects.all()
-
-
 class CharacterList(generics.ListAPIView):
     # permission_classes = (permissions.IsAuthenticated,)
     model = Character
