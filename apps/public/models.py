@@ -47,13 +47,14 @@ class CharacterClass(models.Model):
 class Character(models.Model):
     owner = models.ForeignKey(User, 'username', default='')
     name = models.CharField(max_length=10, unique=True, default='')
-    is_active = models.BooleanField(default=False)
+    health = models.IntegerField(default=30,)
+    sprite = models.CharField(max_length=10, default='')
     race = models.ForeignKey(Race, default='')
     nationality = models.ForeignKey(Nationality, default='')
     character_class = models.ForeignKey(CharacterClass, default='')
-    hit_points = models.IntegerField(default=30,)
     skills = models.ManyToManyField(Skill,)
-    inventory = models.ManyToManyField(Item, default='')
+    inventory = models.ManyToManyField(Item, related_name='characters', default='')
+    weapon = models.ForeignKey(Item, 'name', default='')
 
     def __unicode__(self):
         return self.name
