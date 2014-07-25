@@ -11,3 +11,6 @@ admin.site.register(Item)
 admin.site.register(Skill)
 admin.site.register(Race)
 admin.site.register(Nationality)
+admin.site.register(CharacterClass)
+admin.site.register(Player)
+

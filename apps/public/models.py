@@ -41,23 +41,37 @@ class Nationality(models.Model):
 
 
 class CharacterClass(models.Model):
-    name = models.CharField(max_length=50, unique=True, default='')
+    name = models.CharField(max_length=10, unique=True, default='')
+
+    def __unicode__(self):
+        return self.name
+
+    class Meta:
+        verbose_name_plural = 'Character Classes'
 
 
 class Character(models.Model):
-    owner = models.ForeignKey(User, 'username', default='')
+    owner = models.ForeignKey(User, 'username')
     name = models.CharField(max_length=10, unique=True, default='')
     health = models.IntegerField(default=30,)
-    sprite = models.CharField(max_length=10, default='')
+    maxHealth = models.IntegerField(default=30)
+    sprite = models.CharField(max_length=30, default='')
     race = models.ForeignKey(Race, default='')
     nationality = models.ForeignKey(Nationality, default='')
-    character_class = models.ForeignKey(CharacterClass, default='')
+    character_class = models.ForeignKey(CharacterClass, 'name', default='')
     skills = models.ManyToManyField(Skill,)
     inventory = models.ManyToManyField(Item, related_name='characters', default='')
     weapon = models.ForeignKey(Item, 'name', default='')
 
     def __unicode__(self):
         return self.name
+
+
+class Player(User):
+    character = models.OneToOneField(Character,)
+
+    def __unicode__(self):
+        return self.first_name
 
 
 class Encounter(models.Model):
@@ -87,8 +101,8 @@ class Chapter(models.Model):
 
 class Game(models.Model):
     name = models.CharField(max_length=10, unique=True, default='')
-    players = models.ManyToManyField(User, default='', related_name='Games')
-    game_master = models.OneToOneField(User,)
+    players = models.ManyToManyField(Player, default='', related_name='Games')
+    game_master = models.ForeignKey(Player, 'username', default='')
     chapters = models.ManyToManyField(Chapter, default='')
 
     def __unicode__(self):

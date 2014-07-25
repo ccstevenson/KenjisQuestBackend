@@ -2,6 +2,11 @@ from rest_framework import serializers
 from models import *
 
 
+class PlayerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Player
+
+
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
@@ -45,7 +50,7 @@ class NationalitySerializer(serializers.ModelSerializer):
 class GameSerializer(serializers.ModelSerializer):
     class Meta:
         model = Game
-        depth = 4
+        depth = 5
 
 
 class ChapterSerializer(serializers.ModelSerializer):
