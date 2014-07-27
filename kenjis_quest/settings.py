@@ -1,17 +1,10 @@
 """
 Django settings for kenjis_quest project.
-
-For more information on this file, see
-https://docs.djangoproject.com/en/1.6/topics/settings/
-
-For the full list of settings and their values, see
-https://docs.djangoproject.com/en/1.6/ref/settings/
 """
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
@@ -26,9 +19,7 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
-
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
@@ -44,8 +35,8 @@ INSTALLED_APPS = (
 
 MIDDLEWARE_CLASSES = (
     'corsheaders.middleware.CorsMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -55,7 +46,6 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'kenjis_quest.urls'
 
 WSGI_APPLICATION = 'kenjis_quest.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
@@ -86,9 +76,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-
 CORS_ORIGIN_WHITELIST = (
-    'localhost:8000',
-    'localhost/'
+    'http://localhost:8000'
 )
-CORS_ORIGIN_ALLOW_ALL = True
+
+CORS_ORIGIN_ALLOW_ALL = False
