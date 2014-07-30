@@ -61,6 +61,7 @@ class Character(models.Model):
     skills = models.ManyToManyField(Skill,)
     inventory = models.ManyToManyField(Item, related_name='characters', default='')
     weapon = models.ForeignKey(Item, 'name', default='')
+    color = models.CharField(max_length=10, default='', null=True, blank=True)
 
     def __unicode__(self):
         return self.name
