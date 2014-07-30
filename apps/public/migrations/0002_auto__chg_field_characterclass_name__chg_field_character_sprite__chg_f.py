@@ -10,96 +10,78 @@ class Migration(SchemaMigration):
     def forwards(self, orm):
 
         # Changing field 'CharacterClass.name'
-        db.alter_column(u'public_characterclass', 'name', self.gf('django.db.models.fields.CharField')(unique=True, max_length=20))
-        # Deleting field 'Character.owner'
-        db.delete_column(u'public_character', 'owner_id')
+        db.alter_column(u'public_characterclass', 'name', self.gf('django.db.models.fields.CharField')(unique=True, max_length=50))
 
+        # Changing field 'Character.sprite'
+        db.alter_column(u'public_character', 'sprite', self.gf('django.db.models.fields.CharField')(max_length=50))
 
         # Changing field 'Character.name'
-        db.alter_column(u'public_character', 'name', self.gf('django.db.models.fields.CharField')(unique=True, max_length=20))
+        db.alter_column(u'public_character', 'name', self.gf('django.db.models.fields.CharField')(unique=True, max_length=50))
 
         # Changing field 'Nationality.name'
-        db.alter_column(u'public_nationality', 'name', self.gf('django.db.models.fields.CharField')(unique=True, max_length=20))
-        # Removing M2M table for field players on 'Encounter'
-        db.delete_table(db.shorten_name(u'public_encounter_players'))
-
+        db.alter_column(u'public_nationality', 'name', self.gf('django.db.models.fields.CharField')(unique=True, max_length=50))
 
         # Changing field 'Encounter.name'
-        db.alter_column(u'public_encounter', 'name', self.gf('django.db.models.fields.CharField')(unique=True, max_length=20))
+        db.alter_column(u'public_encounter', 'name', self.gf('django.db.models.fields.CharField')(unique=True, max_length=50))
 
         # Changing field 'Game.name'
-        db.alter_column(u'public_game', 'name', self.gf('django.db.models.fields.CharField')(unique=True, max_length=20))
+        db.alter_column(u'public_game', 'name', self.gf('django.db.models.fields.CharField')(unique=True, max_length=50))
 
         # Changing field 'Chapter.name'
-        db.alter_column(u'public_chapter', 'name', self.gf('django.db.models.fields.CharField')(unique=True, max_length=20))
+        db.alter_column(u'public_chapter', 'name', self.gf('django.db.models.fields.CharField')(unique=True, max_length=50))
 
         # Changing field 'Item.name'
-        db.alter_column(u'public_item', 'name', self.gf('django.db.models.fields.CharField')(unique=True, max_length=20))
+        db.alter_column(u'public_item', 'name', self.gf('django.db.models.fields.CharField')(unique=True, max_length=50))
 
         # Changing field 'Scenario.name'
-        db.alter_column(u'public_scenario', 'name', self.gf('django.db.models.fields.CharField')(unique=True, max_length=20))
+        db.alter_column(u'public_scenario', 'name', self.gf('django.db.models.fields.CharField')(unique=True, max_length=50))
 
         # Changing field 'Skill.name'
-        db.alter_column(u'public_skill', 'name', self.gf('django.db.models.fields.CharField')(unique=True, max_length=20))
+        db.alter_column(u'public_skill', 'name', self.gf('django.db.models.fields.CharField')(unique=True, max_length=50))
+
+        # Changing field 'Weapon.damage'
+        db.alter_column(u'public_weapon', 'damage', self.gf('django.db.models.fields.CharField')(max_length=50))
+
+        # Changing field 'Race.name'
+        db.alter_column(u'public_race', 'name', self.gf('django.db.models.fields.CharField')(unique=True, max_length=50))
+
+    def backwards(self, orm):
+
+        # Changing field 'CharacterClass.name'
+        db.alter_column(u'public_characterclass', 'name', self.gf('django.db.models.fields.CharField')(max_length=20, unique=True))
+
+        # Changing field 'Character.sprite'
+        db.alter_column(u'public_character', 'sprite', self.gf('django.db.models.fields.CharField')(max_length=30))
+
+        # Changing field 'Character.name'
+        db.alter_column(u'public_character', 'name', self.gf('django.db.models.fields.CharField')(max_length=20, unique=True))
+
+        # Changing field 'Nationality.name'
+        db.alter_column(u'public_nationality', 'name', self.gf('django.db.models.fields.CharField')(max_length=20, unique=True))
+
+        # Changing field 'Encounter.name'
+        db.alter_column(u'public_encounter', 'name', self.gf('django.db.models.fields.CharField')(max_length=20, unique=True))
+
+        # Changing field 'Game.name'
+        db.alter_column(u'public_game', 'name', self.gf('django.db.models.fields.CharField')(max_length=20, unique=True))
+
+        # Changing field 'Chapter.name'
+        db.alter_column(u'public_chapter', 'name', self.gf('django.db.models.fields.CharField')(max_length=20, unique=True))
+
+        # Changing field 'Item.name'
+        db.alter_column(u'public_item', 'name', self.gf('django.db.models.fields.CharField')(max_length=20, unique=True))
+
+        # Changing field 'Scenario.name'
+        db.alter_column(u'public_scenario', 'name', self.gf('django.db.models.fields.CharField')(max_length=20, unique=True))
+
+        # Changing field 'Skill.name'
+        db.alter_column(u'public_skill', 'name', self.gf('django.db.models.fields.CharField')(max_length=20, unique=True))
 
         # Changing field 'Weapon.damage'
         db.alter_column(u'public_weapon', 'damage', self.gf('django.db.models.fields.CharField')(max_length=20))
 
         # Changing field 'Race.name'
-        db.alter_column(u'public_race', 'name', self.gf('django.db.models.fields.CharField')(unique=True, max_length=20))
-
-    def backwards(self, orm):
-
-        # Changing field 'CharacterClass.name'
-        db.alter_column(u'public_characterclass', 'name', self.gf('django.db.models.fields.CharField')(max_length=10, unique=True))
-
-        # User chose to not deal with backwards NULL issues for 'Character.owner'
-        raise RuntimeError("Cannot reverse this migration. 'Character.owner' and its values cannot be restored.")
-        
-        # The following code is provided here to aid in writing a correct migration        # Adding field 'Character.owner'
-        db.add_column(u'public_character', 'owner',
-                      self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'], to_field='username'),
-                      keep_default=False)
-
-
-        # Changing field 'Character.name'
-        db.alter_column(u'public_character', 'name', self.gf('django.db.models.fields.CharField')(max_length=10, unique=True))
-
-        # Changing field 'Nationality.name'
-        db.alter_column(u'public_nationality', 'name', self.gf('django.db.models.fields.CharField')(max_length=10, unique=True))
-        # Adding M2M table for field players on 'Encounter'
-        m2m_table_name = db.shorten_name(u'public_encounter_players')
-        db.create_table(m2m_table_name, (
-            ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
-            ('encounter', models.ForeignKey(orm[u'public.encounter'], null=False)),
-            ('character', models.ForeignKey(orm[u'public.character'], null=False))
-        ))
-        db.create_unique(m2m_table_name, ['encounter_id', 'character_id'])
-
-
-        # Changing field 'Encounter.name'
-        db.alter_column(u'public_encounter', 'name', self.gf('django.db.models.fields.CharField')(max_length=10, unique=True))
-
-        # Changing field 'Game.name'
-        db.alter_column(u'public_game', 'name', self.gf('django.db.models.fields.CharField')(max_length=10, unique=True))
-
-        # Changing field 'Chapter.name'
-        db.alter_column(u'public_chapter', 'name', self.gf('django.db.models.fields.CharField')(max_length=10, unique=True))
-
-        # Changing field 'Item.name'
-        db.alter_column(u'public_item', 'name', self.gf('django.db.models.fields.CharField')(max_length=10, unique=True))
-
-        # Changing field 'Scenario.name'
-        db.alter_column(u'public_scenario', 'name', self.gf('django.db.models.fields.CharField')(max_length=10, unique=True))
-
-        # Changing field 'Skill.name'
-        db.alter_column(u'public_skill', 'name', self.gf('django.db.models.fields.CharField')(max_length=10, unique=True))
-
-        # Changing field 'Weapon.damage'
-        db.alter_column(u'public_weapon', 'damage', self.gf('django.db.models.fields.CharField')(max_length=10))
-
-        # Changing field 'Race.name'
-        db.alter_column(u'public_race', 'name', self.gf('django.db.models.fields.CharField')(max_length=10, unique=True))
+        db.alter_column(u'public_race', 'name', self.gf('django.db.models.fields.CharField')(max_length=20, unique=True))
 
     models = {
         u'auth.group': {
@@ -141,7 +123,7 @@ class Migration(SchemaMigration):
         u'public.chapter': {
             'Meta': {'object_name': 'Chapter'},
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'default': "''", 'unique': 'True', 'max_length': '20'}),
+            'name': ('django.db.models.fields.CharField', [], {'default': "''", 'unique': 'True', 'max_length': '50'}),
             'scenario': ('django.db.models.fields.related.ManyToManyField', [], {'default': "''", 'to': u"orm['public.Scenario']", 'symmetrical': 'False'})
         },
         u'public.character': {
@@ -151,42 +133,42 @@ class Migration(SchemaMigration):
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'inventory': ('django.db.models.fields.related.ManyToManyField', [], {'default': "''", 'related_name': "'characters'", 'symmetrical': 'False', 'to': u"orm['public.Item']"}),
             'maxHealth': ('django.db.models.fields.IntegerField', [], {'default': '30'}),
-            'name': ('django.db.models.fields.CharField', [], {'default': "''", 'unique': 'True', 'max_length': '20'}),
+            'name': ('django.db.models.fields.CharField', [], {'default': "''", 'unique': 'True', 'max_length': '50'}),
             'nationality': ('django.db.models.fields.related.ForeignKey', [], {'default': "''", 'to': u"orm['public.Nationality']"}),
             'race': ('django.db.models.fields.related.ForeignKey', [], {'default': "''", 'to': u"orm['public.Race']"}),
             'skills': ('django.db.models.fields.related.ManyToManyField', [], {'to': u"orm['public.Skill']", 'symmetrical': 'False'}),
-            'sprite': ('django.db.models.fields.CharField', [], {'default': "''", 'max_length': '30'}),
+            'sprite': ('django.db.models.fields.CharField', [], {'default': "''", 'max_length': '50'}),
             'weapon': ('django.db.models.fields.related.ForeignKey', [], {'default': "''", 'to': u"orm['public.Item']", 'to_field': "'name'"})
         },
         u'public.characterclass': {
             'Meta': {'object_name': 'CharacterClass'},
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'default': "''", 'unique': 'True', 'max_length': '20'})
+            'name': ('django.db.models.fields.CharField', [], {'default': "''", 'unique': 'True', 'max_length': '50'})
         },
         u'public.encounter': {
             'Meta': {'object_name': 'Encounter'},
             'characters': ('django.db.models.fields.related.ManyToManyField', [], {'default': "''", 'to': u"orm['public.Character']", 'symmetrical': 'False'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'items': ('django.db.models.fields.related.ManyToManyField', [], {'default': "''", 'to': u"orm['public.Item']", 'symmetrical': 'False'}),
-            'name': ('django.db.models.fields.CharField', [], {'default': "''", 'unique': 'True', 'max_length': '20'})
+            'name': ('django.db.models.fields.CharField', [], {'default': "''", 'unique': 'True', 'max_length': '50'})
         },
         u'public.game': {
             'Meta': {'object_name': 'Game'},
             'chapters': ('django.db.models.fields.related.ManyToManyField', [], {'default': "''", 'to': u"orm['public.Chapter']", 'symmetrical': 'False'}),
             'game_master': ('django.db.models.fields.related.ForeignKey', [], {'default': "''", 'to': u"orm['public.Player']", 'to_field': "'username'"}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'default': "''", 'unique': 'True', 'max_length': '20'}),
+            'name': ('django.db.models.fields.CharField', [], {'default': "''", 'unique': 'True', 'max_length': '50'}),
             'players': ('django.db.models.fields.related.ManyToManyField', [], {'default': "''", 'related_name': "'Games'", 'symmetrical': 'False', 'to': u"orm['public.Player']"})
         },
         u'public.item': {
             'Meta': {'object_name': 'Item'},
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'default': "''", 'unique': 'True', 'max_length': '20'})
+            'name': ('django.db.models.fields.CharField', [], {'default': "''", 'unique': 'True', 'max_length': '50'})
         },
         u'public.nationality': {
             'Meta': {'object_name': 'Nationality'},
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'default': "''", 'unique': 'True', 'max_length': '20'})
+            'name': ('django.db.models.fields.CharField', [], {'default': "''", 'unique': 'True', 'max_length': '50'})
         },
         u'public.player': {
             'Meta': {'object_name': 'Player', '_ormbases': [u'auth.User']},
@@ -196,22 +178,22 @@ class Migration(SchemaMigration):
         u'public.race': {
             'Meta': {'object_name': 'Race'},
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'default': "''", 'unique': 'True', 'max_length': '20'})
+            'name': ('django.db.models.fields.CharField', [], {'default': "''", 'unique': 'True', 'max_length': '50'})
         },
         u'public.scenario': {
             'Meta': {'object_name': 'Scenario'},
             'encounters': ('django.db.models.fields.related.ManyToManyField', [], {'default': "''", 'to': u"orm['public.Encounter']", 'symmetrical': 'False'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'default': "''", 'unique': 'True', 'max_length': '20'})
+            'name': ('django.db.models.fields.CharField', [], {'default': "''", 'unique': 'True', 'max_length': '50'})
         },
         u'public.skill': {
             'Meta': {'object_name': 'Skill'},
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'default': "''", 'unique': 'True', 'max_length': '20'})
+            'name': ('django.db.models.fields.CharField', [], {'default': "''", 'unique': 'True', 'max_length': '50'})
         },
         u'public.weapon': {
             'Meta': {'object_name': 'Weapon', '_ormbases': [u'public.Item']},
-            'damage': ('django.db.models.fields.CharField', [], {'default': "''", 'max_length': '20'}),
+            'damage': ('django.db.models.fields.CharField', [], {'default': "''", 'max_length': '50'}),
             u'item_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': u"orm['public.Item']", 'unique': 'True', 'primary_key': 'True'})
         }
     }

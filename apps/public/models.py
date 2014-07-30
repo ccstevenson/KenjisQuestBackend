@@ -3,35 +3,35 @@ from django.contrib.auth.models import User
 
 
 class Item(models.Model):
-    name = models.CharField(max_length=20, unique=True, default='')
+    name = models.CharField(max_length=50, unique=True, default='')
 
     def __unicode__(self):
         return self.name
 
 
 class Weapon(Item):
-    damage = models.CharField(max_length=20, default='')
+    damage = models.CharField(max_length=50, default='')
 
     def __unicode__(self):
         return self.name
 
 
 class Skill(models.Model):
-    name = models.CharField(max_length=20, unique=True, default='')
+    name = models.CharField(max_length=50, unique=True, default='')
 
     def __unicode__(self):
         return self.name
 
 
 class Race(models.Model):
-    name = models.CharField(max_length=20, unique=True, default='')
+    name = models.CharField(max_length=50, unique=True, default='')
 
     def __unicode__(self):
         return self.name
 
 
 class Nationality(models.Model):
-    name = models.CharField(max_length=20, unique=True, default='')
+    name = models.CharField(max_length=50, unique=True, default='')
 
     def __unicode__(self):
         return self.name
@@ -41,7 +41,7 @@ class Nationality(models.Model):
 
 
 class CharacterClass(models.Model):
-    name = models.CharField(max_length=20, unique=True, default='')
+    name = models.CharField(max_length=50, unique=True, default='')
 
     def __unicode__(self):
         return self.name
@@ -51,10 +51,10 @@ class CharacterClass(models.Model):
 
 
 class Character(models.Model):
-    name = models.CharField(max_length=20, unique=True, default='')
+    name = models.CharField(max_length=50, unique=True, default='')
     health = models.IntegerField(default=30,)
     maxHealth = models.IntegerField(default=30)
-    sprite = models.CharField(max_length=30, default='')
+    sprite = models.CharField(max_length=50, default='')
     race = models.ForeignKey(Race, default='')
     nationality = models.ForeignKey(Nationality, default='')
     character_class = models.ForeignKey(CharacterClass, 'name', default='')
@@ -74,7 +74,7 @@ class Player(User):
 
 
 class Encounter(models.Model):
-    name = models.CharField(max_length=20, unique=True, default='')
+    name = models.CharField(max_length=50, unique=True, default='')
     items = models.ManyToManyField(Item, default='')
     characters = models.ManyToManyField(Character, default='')
 
@@ -83,7 +83,7 @@ class Encounter(models.Model):
 
 
 class Scenario(models.Model):
-    name = models.CharField(max_length=20, unique=True, default='')
+    name = models.CharField(max_length=50, unique=True, default='')
     encounters = models.ManyToManyField(Encounter, default='')
 
     def __unicode__(self):
@@ -91,7 +91,7 @@ class Scenario(models.Model):
 
 
 class Chapter(models.Model):
-    name = models.CharField(max_length=20, unique=True, default='')
+    name = models.CharField(max_length=50, unique=True, default='')
     scenario = models.ManyToManyField(Scenario, default='')
 
     def __unicode__(self):
@@ -99,7 +99,7 @@ class Chapter(models.Model):
 
 
 class Game(models.Model):
-    name = models.CharField(max_length=20, unique=True, default='')
+    name = models.CharField(max_length=50, unique=True, default='')
     players = models.ManyToManyField(Player, default='', related_name='Games')
     game_master = models.ForeignKey(Player, 'username', default='')
     chapters = models.ManyToManyField(Chapter, default='')
