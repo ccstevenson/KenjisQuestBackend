@@ -57,6 +57,7 @@ class Character(models.Model):
     sprite = models.CharField(max_length=50, default='')
     race = models.ForeignKey(Race, default='')
     nationality = models.ForeignKey(Nationality, default='')
+    damage = models.CharField(max_length=30, default='')
     character_class = models.ForeignKey(CharacterClass, 'name', default='')
     skills = models.ManyToManyField(Skill,)
     inventory = models.ManyToManyField(Item, related_name='characters', default='')
