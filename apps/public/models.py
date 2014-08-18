@@ -79,6 +79,7 @@ class Encounter(models.Model):
     name = models.CharField(max_length=50, unique=True, default='')
     items = models.ManyToManyField(Item, default='')
     characters = models.ManyToManyField(Character, default='')
+    background = models.CharField(max_length=200, default='../img/cave.png')
 
     def __unicode__(self):
         return self.name
