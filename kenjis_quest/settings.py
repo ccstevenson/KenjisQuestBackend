@@ -77,6 +77,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 CORS_ORIGIN_WHITELIST = (
+    'http://kenjisquest.com',
+    'http://dev.kenjisquest.com',
     'http://localhost:8000'
 )
 
