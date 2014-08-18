@@ -79,7 +79,7 @@ STATIC_URL = '/static/'
 CORS_ORIGIN_WHITELIST = (
     'http://kenjisquest.com',
     'http://dev.kenjisquest.com',
-    'http://localhost:8000'
+    'localhost:8000',
 )
 
 CORS_ORIGIN_ALLOW_ALL = False
